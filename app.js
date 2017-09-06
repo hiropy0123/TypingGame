@@ -71,6 +71,12 @@ Typing.timerHandler = function()
 		clearInterval(Typing.timerID);
 		Typing.close();
 	}
+  if(Typing.second <= 10)
+  {
+    Typing.timerArea.css({
+      'color' : '#ff0000'
+    });
+  }
 	var m = Math.floor(Typing.second / 60);
 	var s = Typing.second % 60;
 	if(m < 10) m = "0" + m;
