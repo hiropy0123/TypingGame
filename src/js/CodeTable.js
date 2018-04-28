@@ -1,4 +1,6 @@
-[
+
+
+export const CodeTable = [
   {"keyCode":32, "keyLabel":[ " " , " " ]},
   {"keyCode":48, "keyLabel":[ "0" , "" ]},
   {"keyCode":49, "keyLabel":[ "1" , "!" ]},

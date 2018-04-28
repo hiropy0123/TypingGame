@@ -1,0 +1,37 @@
+{
+  "name": "typinggame",
+  "version": "1.0.0",
+  "description": "Japanese bible scripture typing game!",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiropy0123/TypingGame.git"
+  },
+  "author": "Hiroki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiropy0123/TypingGame/issues"
+  },
+  "homepage": "https://github.com/hiropy0123/TypingGame#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.21.0",
+    "vue-loader": "^15.0.4",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "vue": "^2.5.16"
+  },
+  "private": true
+}

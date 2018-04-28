@@ -18,7 +18,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
+
+#wrap::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #a6d9007c 0%, #ff44547c 100%);
+    animation: huerotator 20s infinite alternate;
+}
+
+@keyframes huerotator {
+    0% {
+      -webkit-filter: hue-rotate(0deg);
+      filter: hue-rotate(0deg);
+    }
+  
+    100% {
+      -webkit-filter: hue-rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+
 #container {
   position: relative;
   width: 720px;

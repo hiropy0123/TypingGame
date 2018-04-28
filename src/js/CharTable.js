@@ -1,4 +1,6 @@
-[
+
+
+export const CharTable = [
   {"char": "１", "typekey": ["1"]},
 	{"char": "２", "typekey": ["2"]},
 	{"char": "３", "typekey": ["3"]},
