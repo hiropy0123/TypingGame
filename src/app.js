@@ -1,10 +1,13 @@
 import { CharTable } from './js/CharTable';
 import { CodeTable } from './js/CodeTable';
-import { BibleData } from './js/BibleData';
+// import { BibleData } from './js/BibleData';
 import jQuery from 'jquery';
+import * as firebase from "firebase";
+import { firebaseConfig } from './js/firebaseConfig';
 
 import './style.css';
 
+// initialize
 jQuery(function()
 {
 	Typing.init();
@@ -31,9 +34,39 @@ var Typing =
 		Typing.wrongPoint = 5;
 		Typing.startKey = "J";
 
-		Typing.ready();
 	}
 }
+
+// Load Keycode
+Typing.codeTable = {};
+for ( let code of CodeTable ) {
+	Typing.codeTable[ code.keyCode ] = code.keyLabel;
+}
+
+// Load Charactor
+Typing.charTable = {};
+for ( let ct of CharTable ) {
+	Typing.charTable[ ct.char ] = ct.typekey;
+}
+
+// Load Typing Data
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+let BibleData = [];
+// Firebase
+let database = firebase.database();
+const dataRef = database.ref('/BibleData');
+dataRef.once("value").then(function(snapshot) {
+	// Load Typing Data
+	for (let i = 0;  i < snapshot.val().length; i++){
+		BibleData.push(snapshot.val()[i]);
+	}
+	Typing.datas = BibleData;
+	console.log('database ready');
+	Typing.ready();
+});
+
 
 Typing.ready = function()
 {
@@ -479,55 +512,3 @@ Typing.activeKeyboard = function(nextChar)
 		jQuery(".key" + nextCode.code, Typing.keyboards2).addClass("active");
 	}
 }
-
-// LOAD FROM JSON
-// Typing.codeTable = $.getJSON("json/codeTable.json", function(codeTable)
-// {
-//   for(var i = 0; i < codeTable.length; i++)
-//   {
-//     var codeTable = codeTable[i];
-//     //console.log(Typing.codeTable);
-//   }
-//   return codeTable;
-// }
-// );
-// console.log(Typing.codeTable);
-
-
-// Typing.charTable = $.getJSON("json/charTable.json", function(charTable)
-// {
-//   for(var i = 0; i < charTable.length; i++)
-//   {
-//     var charTable = charTable[i];
-//   }
-//   return charTable;
-// }
-// );
-
-
-// Typing.datas = $.getJSON("json/datas.json", function(datas)
-// {
-//   for(var i = 0; i < datas.length; i++)
-//   {
-//     var datas = datas[i];
-//   }
-//   return datas;
-// }
-// );
-
-
-// Load Keycode
-Typing.codeTable = {};
-for ( let code of CodeTable ) {
-	Typing.codeTable[ code.keyCode ] = code.keyLabel;
-}
-
-// Load Charactor
-Typing.charTable = {};
-for ( let ct of CharTable ) {
-	Typing.charTable[ ct.char ] = ct.typekey;
-}
-
-// Load Typing Data
-Typing.datas = BibleData;
-

@@ -1,0 +1,24 @@
+{
+  "short_name": "BibleTyping",
+  "name": "聖書タイピングゲーム",
+  "icons": [
+    {
+      "src": "launcher-icon-1x.png",
+      "type": "img/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "launcher-icon-2x.png",
+      "type": "img/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "launcher-icon-4x.png",
+      "type": "img/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html?launcher=true",
+  "display": "standalone",
+  "theme_color": "#98dbf5"
+}
